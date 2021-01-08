@@ -17,6 +17,7 @@ function LikeButton() {
     );
 }
 
+// Container 컴포넌트
 function Container() {
     // count: 상태값 추가
     const [count, setCount] = React.useState(0);
