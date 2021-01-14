@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import pengsoo1 from './pengsoo1.jpg';
+import pengsoo2 from './Pengsoo2.jpg';
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <img src={pengsoo1} className="App-logo" alt="logo"/>
+        <img src={pengsoo2} className="App-logo" alt="logo"/>
         <button onClick={onClick}>데이터를 보여주세요</button>
         <p>
           hello!
