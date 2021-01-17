@@ -1,0 +1,14 @@
+@import './shared.scss'; // 다른 스타일 코드를 가져와서 사용할 수 있다.
+
+.big{
+    width: 200px;
+}
+
+.small{
+    width: 100px;
+}
+
+.box{
+    height: 50px;
+    background-color: $infoColor;
+}
