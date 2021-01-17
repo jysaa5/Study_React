@@ -1,0 +1,12 @@
+.big{
+    width: 100px;
+}
+
+.small{
+    width: 50px;
+}
+
+.box{
+    height: 30px;
+    background-color: yellow;
+}
