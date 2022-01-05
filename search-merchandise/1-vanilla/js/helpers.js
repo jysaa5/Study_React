@@ -14,10 +14,12 @@ export function qsAll(selector, scope = document) {
   return Array.from(scope.querySelectorAll(selector));
 }
 
+// target element에서 이벤트를 수신하고 eventName 이벤트를 발행되면 handler 함수를 호출한다.
 export function on(target, eventName, handler) {
   target.addEventListener(eventName, handler);
 }
 
+// 특정 element의 하위에 있는 자식 element의 이벤트를 처리
 export function delegate(target, eventName, selector, handler) {
   const emitEvent = (event) => {
     const potentialElements = qsAll(selector, target);
@@ -32,6 +34,7 @@ export function delegate(target, eventName, selector, handler) {
   on(target, eventName, emitEvent);
 }
 
+// 이벤트 발행: CustomEvent를 target element가 발행 할 수 있도록 함.
 export function emit(target, eventName, detail) {
   const event = new CustomEvent(eventName, { detail });
   target.dispatchEvent(event);
