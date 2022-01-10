@@ -29,5 +29,9 @@ export default class SearchFormView extends View {
   handleSubmit(event) {
     event.preventDefault();
     console.log(tag, "handleSubmit");
+    // 검색어
+    const { value } = this.inputElement;
+    // 커스텀 이벤트
+    this.emit("@submit", { value });
   }
 }
