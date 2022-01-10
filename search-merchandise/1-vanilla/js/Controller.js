@@ -10,9 +10,14 @@ export default class Controller {
 
   subscriveViewEvents() {
     this.searchFormView.on("@submit", (event) => this.search(event.detail.value));
+    this.searchFormView.on("@click", () => this.deletSearchResult());
   }
 
   search(keyword) {
     console.log(tag, keyword);
+  }
+
+  deletSearchResult() {
+    console.log(tag, "deleteSearchResult");
   }
 }
