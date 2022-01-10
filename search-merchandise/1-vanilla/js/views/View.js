@@ -6,7 +6,7 @@ export default class View {
   // 생성자
   constructor(element) {
     if (!element) throw "no element";
-
+    console.log(tag, "constructor");
     this.element = element;
     this.originalDisplay = this.element.style.dispaly || "";
 

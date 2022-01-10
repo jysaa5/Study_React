@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", main);
 
 // MVC의 각 객체들을 초기화 해주는 역할
 function main() {
-  console.log(tag);
+  console.log(tag, "main");
   // Model 생성
   const store = new Store(storage);
 
