@@ -22,6 +22,9 @@ export default class Controller {
 
   rest() {
     console.log(tag, "rest");
+    this.store.searchKeyword = "";
+    this.store.searchResult = [];
+    this.render();
   }
 
   // Controller가 관리하고 있는 view들을 이용해서 화면에 출력하는 것
