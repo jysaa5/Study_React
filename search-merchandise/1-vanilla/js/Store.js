@@ -1,3 +1,4 @@
+import { TabType } from "./views/TabView.js";
 const tag = "[Store]";
 
 // MVC중 Model 역할
@@ -10,6 +11,7 @@ export default class Store {
 
     this.searchKeyword = "";
     this.searchResult = [];
+    this.selectedTab = TabType.KEYWORD;
   }
 
   search(keyword) {

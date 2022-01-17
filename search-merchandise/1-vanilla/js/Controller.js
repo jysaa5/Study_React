@@ -32,11 +32,14 @@ export default class Controller {
   // Controller가 관리하고 있는 view들을 이용해서 화면에 출력하는 것
   render() {
     if (this.store.searchKeyword.length > 0) {
-      this.tabView.hide();
-      this.searchResultView.show(this.store.searchResult);
-      return;
+      return this.renderSearchResult();
     }
-    this.tabView.show();
+    this.tabView.show(this.store.selectedTab);
     this.searchResultView.hide();
+  }
+
+  renderSearchResult() {
+    this.tabView.hide();
+    this.searchResultView.show(this.store.searchResult);
   }
 }

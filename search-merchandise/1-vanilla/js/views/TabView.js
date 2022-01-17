@@ -1,7 +1,9 @@
 import View from "./View.js";
-import { qs } from "../helpers.js";
+import { qs, qsAll } from "../helpers.js";
 
-const TabType = {
+const tag = "[TabView]";
+
+export const TabType = {
   KEYWORD: "KEYWORD",
   HISTORY: "HISTORY",
 };
@@ -13,12 +15,16 @@ const TabLabel = {
 
 export default class TabView extends View {
   constructor() {
+    console.log(tag, "constructor");
     super(qs("#tab-view"));
     this.template = new Template();
   }
 
-  show() {
+  show(selectedTab) {
     this.element.innerHTML = this.template.getTabList();
+    qsAll("li", this.element).forEach((li) => {
+      li.className = li.dataset.tab === selectedTab ? "active" : "";
+    });
     super.show();
   }
 }
