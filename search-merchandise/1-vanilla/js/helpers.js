@@ -22,6 +22,7 @@ export function on(target, eventName, handler) {
 // 특정 element의 하위에 있는 자식 element의 이벤트를 처리
 export function delegate(target, eventName, selector, handler) {
   const emitEvent = (event) => {
+    console.log("helpers", event);
     const potentialElements = qsAll(selector, target);
 
     for (const potentialElement of potentialElements) {

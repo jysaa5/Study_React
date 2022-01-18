@@ -1,5 +1,5 @@
 import View from "./View.js";
-import { qs, qsAll, on } from "../helpers.js";
+import { qs, qsAll, on, delegate } from "../helpers.js";
 
 const tag = "[TabView]";
 
@@ -19,7 +19,7 @@ export default class TabView extends View {
     super(qs("#tab-view"));
     this.template = new Template();
     this.element.innerHTML = this.template.getTabList();
-    this.bindEvent();
+    this.bindEvents();
   }
 
   show(selectedTab) {
@@ -31,20 +31,14 @@ export default class TabView extends View {
     super.show();
   }
 
-  bindEvent() {
-    console.log(tag, "bindEvent");
-    console.log(this.element);
-    console.log(document.querySelectorAll("li"));
-    qsAll("li", this.element).forEach((li) => {
-      console.log(li);
-      on(li, "click", () => this.changeResult(li));
-    });
+  bindEvents() {
+    delegate(this.element, "click", "li", (event) => this.handleClick(event));
   }
 
-  changeResult(element) {
-    console.log(tag, "bindEvent");
-    console.log(element);
-    this.emit("@click", { element });
+  handleClick(event) {
+    console.log(tag, event.target);
+    const value = event.target.dataset.tab;
+    this.emit("@change", { value });
   }
 }
 
