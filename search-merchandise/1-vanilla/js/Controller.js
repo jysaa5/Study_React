@@ -14,6 +14,7 @@ export default class Controller {
   subscriveViewEvents() {
     this.searchFormView.on("@submit", (event) => this.search(event.detail.value));
     this.searchFormView.on("@click", () => this.rest());
+    this.tabView.on("@click", (event) => this.changeSearchWord(event.detail.element));
   }
 
   search(searchKeyword) {
@@ -41,5 +42,9 @@ export default class Controller {
   renderSearchResult() {
     this.tabView.hide();
     this.searchResultView.show(this.store.searchResult);
+  }
+
+  changeSearchWord(element) {
+    this.tabView.show(element.dataset.tab);
   }
 }

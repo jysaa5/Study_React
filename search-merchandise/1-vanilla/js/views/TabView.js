@@ -1,5 +1,5 @@
 import View from "./View.js";
-import { qs, qsAll } from "../helpers.js";
+import { qs, qsAll, on } from "../helpers.js";
 
 const tag = "[TabView]";
 
@@ -18,14 +18,33 @@ export default class TabView extends View {
     console.log(tag, "constructor");
     super(qs("#tab-view"));
     this.template = new Template();
+    this.element.innerHTML = this.template.getTabList();
+    this.bindEvent();
   }
 
   show(selectedTab) {
-    this.element.innerHTML = this.template.getTabList();
+    // this.element.innerHTML = this.template.getTabList();
     qsAll("li", this.element).forEach((li) => {
+      console.log(li);
       li.className = li.dataset.tab === selectedTab ? "active" : "";
     });
     super.show();
+  }
+
+  bindEvent() {
+    console.log(tag, "bindEvent");
+    console.log(this.element);
+    console.log(document.querySelectorAll("li"));
+    qsAll("li", this.element).forEach((li) => {
+      console.log(li);
+      on(li, "click", () => this.changeResult(li));
+    });
+  }
+
+  changeResult(element) {
+    console.log(tag, "bindEvent");
+    console.log(element);
+    this.emit("@click", { element });
   }
 }
 
