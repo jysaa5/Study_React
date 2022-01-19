@@ -18,6 +18,7 @@ export default class Controller {
     this.searchFormView.on("@submit", (event) => this.search(event.detail.value));
     this.searchFormView.on("@click", () => this.rest());
     this.tabView.on("@change", (event) => this.changeTab(event.detail.value));
+    this.keywordListView.on("@click", (event) => this.search(event.detail.value));
   }
 
   search(searchKeyword) {
