@@ -16,7 +16,7 @@ export default class Controller {
 
   subscriveViewEvents() {
     this.searchFormView.on("@submit", (event) => this.search(event.detail.value));
-    this.searchFormView.on("@click", () => this.rest());
+    this.searchFormView.on("@reset", () => this.reset());
     this.tabView.on("@change", (event) => this.changeTab(event.detail.value));
     this.keywordListView.on("@click", (event) => this.search(event.detail.value));
   }
@@ -27,7 +27,7 @@ export default class Controller {
     this.render();
   }
 
-  rest() {
+  reset() {
     console.log(tag, "rest");
     this.store.searchKeyword = "";
     this.store.searchResult = [];
@@ -51,6 +51,7 @@ export default class Controller {
   }
 
   renderSearchResult() {
+    this.searchFormView.show(this.store.searchKeyword);
     this.tabView.hide();
     this.keywordListView.hide();
     this.searchResultView.show(this.store.searchResult);
