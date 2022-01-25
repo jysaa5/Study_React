@@ -1,9 +1,9 @@
-import { formatRelativeDate } from "../helpers.js";
+import { formatRelativeDate, qs } from "../helpers.js";
 import KeywordListView from "./KeywordListView.js";
 
 export default class HistoryListView extends KeywordListView {
   constructor() {
-    super(qs("history-list-view"), new Template());
+    super(qs("#history-list-view"), new Template());
   }
 }
 
