@@ -20,6 +20,8 @@ export default class Controller {
     this.searchFormView.on("@reset", () => this.reset());
     this.tabView.on("@change", (event) => this.changeTab(event.detail.value));
     this.keywordListView.on("@click", (event) => this.search(event.detail.value));
+    this.historyListView.on("@click", (event) => this.search(event.detail.value));
+    this.historyListView.on("@remove", (event) => this.removeHistory(event.detail.value));
   }
 
   search(searchKeyword) {
@@ -64,6 +66,11 @@ export default class Controller {
   changeTab(tab) {
     console.log(tag, tab);
     this.store.selectedTab = tab;
+    this.render();
+  }
+
+  removeHistory(keyowrd) {
+    this.store.removeHistory(keyowrd);
     this.render();
   }
 }
