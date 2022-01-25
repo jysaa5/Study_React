@@ -17,6 +17,7 @@ export default class Store {
   search(keyword) {
     this.searchKeyword = keyword;
     this.searchResult = this.storage.productData.filter((product) => product.name.includes(keyword));
+    this.storage.historyData.push({ id: this.storage.historyData.length + 1, keyword: keyword, date: new Date() });
   }
 
   getKeywordList() {
