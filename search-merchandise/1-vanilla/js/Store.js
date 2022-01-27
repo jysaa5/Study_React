@@ -33,21 +33,24 @@ export default class Store {
     return history2.date > history1.date;
   }
 
-  removeHistory(keyowrd) {
-    this.storage.historyData = this.storage.historyData.filter((history) => history.keyword !== keyowrd);
+  removeHistory(keyword) {
+    this.storage.historyData = this.storage.historyData.filter((history) => history.keyword !== keyword);
   }
 
-  addHistory(keyowrd) {
-    keyowrd = keyowrd.trim();
-    if (!keyowrd) {
+  addHistory(keyword) {
+    keyword = keyword.trim();
+    if (!keyword) {
       return;
     }
 
-    const hasHistory = this.storage.historyData.some((history) => history.keyowrd === keyword);
+    const hasHistory = this.storage.historyData.some((history) => history.keyword === keyword);
     if (hasHistory) {
-      this.removeHistory(keyowrd);
+      this.removeHistory(keyword);
     }
 
-    const id = createNextId;
+    const id = createNextId(this.storage.historyData);
+    const date = new Date();
+    this.storage.historyData.push({ id, keyword, date });
+    this.storage.historyData = this.storage.historyData.sort(this._sortHistory);
   }
 }
