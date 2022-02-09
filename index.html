@@ -7,11 +7,36 @@
   </head>
   <body>
     <script>
-      let data = "Hello world"; // Model
-      document.body.innerHTML = `<p>${data}</p>`;
+      // let data = "Hello world"; // Model
+      // document.body.innerHTML = `<p>${data}</p>`;
 
-      data = "안녕"; // Model 변경 -> 이것만 변경해도 화면에 반영될 수 있도록 한다. -> react, vue.js
-      document.body.innerHTML = `<p>${data}</p>`; // 화면에 반영
+      // data = "안녕"; // Model 변경 -> 이것만 변경해도 화면에 반영될 수 있도록 한다. -> react, vue.js
+      // document.body.innerHTML = `<p>${data}</p>`; // 화면에 반영
+
+      const state = {
+        _data: "Hello world",
+      };
+
+      const render = () => (document.body.innerHTML = `<p>${state.data}</p>`);
+
+      // "data": 속성
+      Object.defineProperty(state, "data", {
+        // "data" 속성를 추가할 때 호출됨.
+        get() {
+          console.log("get");
+          return state._data;
+        },
+        // "data" 속성에 값을 할당할 때 호출됨.
+        set(value) {
+          console.log("set");
+          state._data = value;
+          render();
+        },
+      });
+
+      render();
+      state.data = "안녕";
+      state.data = "Hello world";
     </script>
   </body>
 </html>
