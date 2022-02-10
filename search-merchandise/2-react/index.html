@@ -11,8 +11,12 @@
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-      const element = React.createElement("hi", null, "Hello world");
-      ReactDOM.render(element, document.querySelector("#app"));
+      // const element = React.createElement("hi", null, "Hello world");
+      // ReactDOM.render(element, document.querySelector("#app"));
+
+      const p = document.createElement("p");
+      p.textContent = "hello world";
+      document.body.appendChild(p);
     </script>
   </body>
 </html>
