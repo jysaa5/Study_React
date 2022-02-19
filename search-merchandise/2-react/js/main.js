@@ -1,4 +1,9 @@
-// 자바스크립트의 시작점
+// main.js 자바스크립트의 시작점
+
+class App extends React.Component {
+  // render 함수 overriding -> react element를 반환해야 한다. component가 react element 대로 DOM을 그리도록 한다.
+  render() {}
+}
 const element = (
   //<div>
   <>
