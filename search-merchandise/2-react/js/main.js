@@ -1,6 +1,15 @@
 // main.js 자바스크립트의 시작점
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    // 브라우저가 관리하던 것을 react가 관리하도록 함.
+    this.state = {
+      searchKeyword: "Hello",
+    };
+  }
+
   // render 함수 overriding -> react element를 반환해야 한다. component가 react element 대로 DOM을 그리도록 한다.
   render() {
     return (
@@ -10,7 +19,7 @@ class App extends React.Component {
         </header>
         <div className="container">
           <form>
-            <input type="text" placeholder="검색어를 입력해주세요." autoFocus></input>
+            <input type="text" placeholder="검색어를 입력해주세요." autoFocus value={this.state.searchKeyword}></input>
           </form>
         </div>
       </>
