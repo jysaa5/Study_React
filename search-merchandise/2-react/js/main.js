@@ -24,7 +24,10 @@ class App extends React.Component {
 
   // render 함수 overriding -> react element를 반환해야 한다. component가 react element 대로 DOM을 그리도록 한다.
   render() {
-    let resetButton;
+    let resetButton = null; // react에서 null은 아무것도 출력을 하지 않는다.
+    if (this.state.searchKeyword.length > 0) {
+      resetButton = <button type="reset" className="btn-reset"></button>;
+    }
     return (
       <>
         <header>
@@ -33,6 +36,7 @@ class App extends React.Component {
         <div className="container">
           <form>
             <input type="text" placeholder="검색어를 입력해주세요." autoFocus value={this.state.searchKeyword} onChange={(event) => this.handleChangeInput(event)}></input>
+            {resetButton}
           </form>
         </div>
       </>
