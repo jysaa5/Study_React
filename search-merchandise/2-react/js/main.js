@@ -6,12 +6,25 @@ class App extends React.Component {
 
     // 브라우저가 관리하던 것을 react가 관리하도록 함.
     this.state = {
-      searchKeyword: "Hello",
+      searchKeyword: "",
     };
+  }
+
+  handleChangeInput(event) {
+    //this.state.searchKeyword = event.target.value;
+    // render 함수를 다시 부른다.
+    //this.forceUpdate();
+    // 위와 같은 방식은 handleChangeInput 함수가 controller 역할을 하게 만든다. 그러므로 react를 제대로 사용한 것이 아니다.
+    // 아래와 같이 component가 model의 상태가 스스로 변했다는 것을 감지 하도록 변경해줘야 한다.
+
+    this.setState({
+      searchKeyword: event.target.value,
+    });
   }
 
   // render 함수 overriding -> react element를 반환해야 한다. component가 react element 대로 DOM을 그리도록 한다.
   render() {
+    let resetButton;
     return (
       <>
         <header>
@@ -19,7 +32,7 @@ class App extends React.Component {
         </header>
         <div className="container">
           <form>
-            <input type="text" placeholder="검색어를 입력해주세요." autoFocus value={this.state.searchKeyword}></input>
+            <input type="text" placeholder="검색어를 입력해주세요." autoFocus value={this.state.searchKeyword} onChange={(event) => this.handleChangeInput(event)}></input>
           </form>
         </div>
       </>
