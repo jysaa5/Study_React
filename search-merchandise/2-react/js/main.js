@@ -38,7 +38,8 @@ class App extends React.Component {
           <form>
             <input type="text" placeholder="검색어를 입력해주세요." autoFocus value={this.state.searchKeyword} onChange={(event) => this.handleChangeInput(event)}></input>
             {/* {resetButton} */}
-            {this.state.searchKeyword.length > 0 ? <button type="reset" className="btn-reset"></button> : null}
+            {/* {this.state.searchKeyword.length > 0 ? <button type="reset" className="btn-reset"></button> : null} */}
+            {this.state.searchKeyword.length > 0 && <button type="reset" className="btn-reset"></button>}
           </form>
         </div>
       </>
