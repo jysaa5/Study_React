@@ -17,8 +17,9 @@ class App extends React.Component {
     // 위와 같은 방식은 handleChangeInput 함수가 controller 역할을 하게 만든다. 그러므로 react를 제대로 사용한 것이 아니다.
     // 아래와 같이 component가 model의 상태가 스스로 변했다는 것을 감지 하도록 변경해줘야 한다.
 
+    const searchKeyword = event.target.value;
     this.setState({
-      searchKeyword: event.target.value,
+      searchKeyword,
     });
   }
 
