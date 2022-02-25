@@ -18,6 +18,9 @@ class App extends React.Component {
     // 아래와 같이 component가 model의 상태가 스스로 변했다는 것을 감지 하도록 변경해줘야 한다.
 
     const searchKeyword = event.target.value;
+    if (searchKeyword.length <= 0) {
+      return this.handleReset();
+    }
     this.setState({
       searchKeyword,
     });
@@ -29,8 +32,15 @@ class App extends React.Component {
   }
 
   handleReset() {
-    this.setState({ searchKeyword: "" }); // 비동기로 처리됨 -> 나중에 실행된다.
-    console.log("TODO: handleReset", this.state.searchKeyword);
+    //this.setState({ searchKeyword: "" }); // 비동기로 처리됨 -> 나중에 실행된다.
+    this.setState(
+      () => {
+        return { searchKeyword: "" };
+      },
+      () => {
+        console.log("TODO: handleReset", this.state.searchKeyword);
+      }
+    );
   }
 
   // render 함수 overriding -> react element를 반환해야 한다. component가 react element 대로 DOM을 그리도록 한다.
