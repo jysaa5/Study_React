@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   handleReset() {
-    //this.setState({ searchKeyword: "" }); // 비동기로 처리됨 -> 나중에 실행된다.
+    //this.setState({ searchKeyword: "" }); // 비동기로 처리된다. -> 나중에 실행된다.
     this.setState(
       () => {
         return { searchKeyword: "" };
