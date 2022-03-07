@@ -1,5 +1,16 @@
 // main.js 자바스크립트의 시작점
 import store from "./js/Store.js";
+
+const TabType = {
+  KEYWORD: "KEYWORD",
+  HISTORY: "HISTORY",
+};
+
+const TabLabel = {
+  [TabType.KEYWORD]: "추천 검색어",
+  [TabType.HISTORY]: "최근 검색어",
+};
+
 class App extends React.Component {
   constructor() {
     super();
@@ -20,7 +31,7 @@ class App extends React.Component {
     // 아래와 같이 component가 model의 상태가 스스로 변했다는 것을 감지 하도록 변경해줘야 한다.
 
     const searchKeyword = event.target.value;
-    if (searchKeyword.length <= 0) {
+    if (searchKeyword.length <= 0 && this.state.submitted) {
       return this.handleReset();
     }
     this.setState({
@@ -43,7 +54,7 @@ class App extends React.Component {
     //this.setState({ searchKeyword: "" }); // 비동기로 처리된다. -> 나중에 실행된다.
     this.setState(
       () => {
-        return { searchKeyword: "" };
+        return { searchKeyword: "", submitted: false, searchResult: [] };
       },
       () => {
         console.log("TODO: handleReset", this.state.searchKeyword);
@@ -83,6 +94,14 @@ class App extends React.Component {
         <div className="empty-box">검색 결과가 없습니다.</div>
       );
 
+    const tabs = (
+      <ul className="tabs">
+        {Object.values(TabType).map((tabType) => {
+          return <li key={tabType}>{TabLabel[tabType]}</li>;
+        })}
+      </ul>
+    );
+
     return (
       <>
         <header>
@@ -90,7 +109,7 @@ class App extends React.Component {
         </header>
         <div className="container">
           {searchForm}
-          <div className="content">{this.state.submitted && searchResult}</div>
+          <div className="content">{this.state.submitted ? searchResult : tabs}</div>
         </div>
       </>
     );
