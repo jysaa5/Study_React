@@ -1,5 +1,5 @@
 // main.js 자바스크립트의 시작점
-
+import store from "./Store.js";
 class App extends React.Component {
   constructor() {
     super();
@@ -30,6 +30,12 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("TODO: handleSubmit", this.state.searchKeyword);
+    this.search(this.state.searchKeyword);
+  }
+
+  search(searchKeyword) {
+    const searchResult = store.search(searchKeyword);
+    this.setState({ searchResult }); // 변경된 것만 병합되는 방식이므로 searchKeyword는 변경되지 않는다.
   }
 
   handleReset() {
@@ -62,7 +68,22 @@ class App extends React.Component {
             {/* {this.state.searchKeyword.length > 0 ? <button type="reset" className="btn-reset"></button> : null} */}
             {this.state.searchKeyword.length > 0 && <button type="reset" className="btn-reset"></button>}
           </form>
-          <div className="content">{this.state.searchResult.length > 0 ? <div>TODO: 검색결과 목록 표시하기</div> : <div className="empty-box">검색 결과가 없습니다.</div>}</div>
+          <div className="content">
+            {this.state.searchResult.length > 0 ? (
+              <ul>
+                {this.state.searchResult.map((item) => {
+                  return (
+                    <li>
+                      <img src={item.imageUrl} alt={item.name} />
+                      <p>{item.name}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <div className="empty-box">검색 결과가 없습니다.</div>
+            )}
+          </div>
         </div>
       </>
     );
