@@ -11,9 +11,7 @@ class Store {
   }
 
   search(keyword) {
-    this.searchKeyword = keyword;
-    this.searchResult = this.storage.productData.filter((product) => product.name.includes(keyword));
-    this.addHistory(keyword);
+    return this.storage.productData.filter((product) => product.name.includes(keyword));
   }
 
   getKeywordList() {
