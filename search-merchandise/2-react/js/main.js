@@ -64,6 +64,12 @@ class App extends React.Component {
     );
   }
 
+  handleClick(event) {
+    console.log(event.target.children[1].innerText);
+    const clickKeyword = event.target.children[1].innerText;
+    this.setState({ searchKeyword: clickKeyword }, () => this.handleSubmit(event));
+  }
+
   componentDidMount() {
     const keywordList = store.getKeywordList();
     this.setState({ keywordList });
@@ -105,7 +111,7 @@ class App extends React.Component {
       <ul className="list">
         {this.state.keywordList.map((item, index) => {
           return (
-            <li key={item.id}>
+            <li key={item.id} onClick={(event) => this.handleClick(event)}>
               <span className="number">{index + 1}</span>
               <span>{item.keyword}</span>
             </li>
