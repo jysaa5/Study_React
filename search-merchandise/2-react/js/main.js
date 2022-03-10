@@ -21,6 +21,7 @@ class App extends React.Component {
       searchResult: [],
       submitted: false, // 검색 자체를 했는지 안했는지 여부
       selectedTab: TabType.KEYWORD,
+      keywordList: [],
     };
   }
 
@@ -63,6 +64,11 @@ class App extends React.Component {
     );
   }
 
+  componentDidMount() {
+    const keywordList = store.getKeywordList();
+    this.setState({ keywordList });
+  }
+
   // render 함수 overriding -> react element를 반환해야 한다. component가 react element 대로 DOM을 그리도록 한다.
   render() {
     // let resetButton = null; // react에서 null은 아무것도 출력을 하지 않는다.
@@ -95,6 +101,19 @@ class App extends React.Component {
         <div className="empty-box">검색 결과가 없습니다.</div>
       );
 
+    const keywordList = (
+      <ul className="list">
+        {this.state.keywordList.map((item, index) => {
+          return (
+            <li key={item.id}>
+              <span className="number">{index + 1}</span>
+              <span>{item.keyword}</span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+
     const tabs = (
       <>
         <ul className="tabs">
@@ -106,7 +125,7 @@ class App extends React.Component {
             );
           })}
         </ul>
-        {this.state.selectedTab === TabType.KEYWORD && <>TODO: 추천 검색어</>}
+        {this.state.selectedTab === TabType.KEYWORD && keywordList}
         {this.state.selectedTab === TabType.HISTORY && <>TODO: 최근 검색어</>}
       </>
     );
