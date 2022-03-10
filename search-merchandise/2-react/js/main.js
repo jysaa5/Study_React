@@ -1,5 +1,6 @@
 // main.js 자바스크립트의 시작점
 import store from "./js/Store.js";
+import { formatRelativeDate } from "./js/helpers.js";
 
 const TabType = {
   KEYWORD: "KEYWORD",
@@ -22,6 +23,7 @@ class App extends React.Component {
       submitted: false, // 검색 자체를 했는지 안했는지 여부
       selectedTab: TabType.KEYWORD,
       keywordList: [],
+      historyList: [],
     };
   }
 
@@ -66,7 +68,8 @@ class App extends React.Component {
 
   componentDidMount() {
     const keywordList = store.getKeywordList();
-    this.setState({ keywordList });
+    const historyList = store.getHistoryList();
+    this.setState({ keywordList, historyList });
   }
 
   // render 함수 overriding -> react element를 반환해야 한다. component가 react element 대로 DOM을 그리도록 한다.
@@ -114,6 +117,20 @@ class App extends React.Component {
       </ul>
     );
 
+    const historyList = (
+      <ul className="list">
+        {this.state.historyList.map(({ id, keyword, date }) => {
+          return (
+            <li key={id}>
+              <span>{keyword}</span>
+              <span className="date">{formatRelativeDate(date)}</span>
+              <button className="btn-remove"></button>
+            </li>
+          );
+        })}
+      </ul>
+    );
+
     const tabs = (
       <>
         <ul className="tabs">
@@ -126,7 +143,7 @@ class App extends React.Component {
           })}
         </ul>
         {this.state.selectedTab === TabType.KEYWORD && keywordList}
-        {this.state.selectedTab === TabType.HISTORY && <>TODO: 최근 검색어</>}
+        {this.state.selectedTab === TabType.HISTORY && historyList}
       </>
     );
 
