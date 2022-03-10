@@ -49,7 +49,7 @@ class App extends React.Component {
 
   search(searchKeyword) {
     const searchResult = store.search(searchKeyword);
-    this.setState({ searchResult, submitted: true }); // 변경된 것만 병합되는 방식이므로 searchKeyword는 변경되지 않는다.
+    this.setState({ searchKeyword, searchResult, submitted: true }); // 변경된 것만 병합되는 방식이므로 searchKeyword는 변경되지 않는다.
   }
 
   handleReset() {
@@ -62,12 +62,6 @@ class App extends React.Component {
         console.log("TODO: handleReset", this.state.searchKeyword);
       }
     );
-  }
-
-  handleClick(event) {
-    console.log(event.target.children[1].innerText);
-    const clickKeyword = event.target.children[1].innerText;
-    this.setState({ searchKeyword: clickKeyword }, () => this.handleSubmit(event));
   }
 
   componentDidMount() {
@@ -109,11 +103,11 @@ class App extends React.Component {
 
     const keywordList = (
       <ul className="list">
-        {this.state.keywordList.map((item, index) => {
+        {this.state.keywordList.map(({ id, keyword }, index) => {
           return (
-            <li key={item.id} onClick={(event) => this.handleClick(event)}>
+            <li key={id} onClick={() => this.search(keyword)}>
               <span className="number">{index + 1}</span>
-              <span>{item.keyword}</span>
+              <span>{keyword}</span>
             </li>
           );
         })}
