@@ -121,7 +121,7 @@ class App extends React.Component {
       <ul className="list">
         {this.state.historyList.map(({ id, keyword, date }) => {
           return (
-            <li key={id}>
+            <li key={id} onClick={() => this.search(keyword)}>
               <span>{keyword}</span>
               <span className="date">{formatRelativeDate(date)}</span>
               <button className="btn-remove"></button>
