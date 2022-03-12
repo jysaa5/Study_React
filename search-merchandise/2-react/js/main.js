@@ -51,7 +51,8 @@ class App extends React.Component {
 
   search(searchKeyword) {
     const searchResult = store.search(searchKeyword);
-    this.setState({ searchKeyword, searchResult, submitted: true }); // 변경된 것만 병합되는 방식이므로 searchKeyword는 변경되지 않는다.
+    const historyList = store.getHistoryList();
+    this.setState({ searchKeyword, searchResult, historyList, submitted: true }); // 변경된 것만 병합되는 방식이므로 searchKeyword는 변경되지 않는다.
   }
 
   handleReset() {
@@ -64,6 +65,13 @@ class App extends React.Component {
         console.log("TODO: handleReset", this.state.searchKeyword);
       }
     );
+  }
+
+  handleClickRemoveHistory(event, keyword) {
+    event.stopPropagation(); // 이벤트 버블링을 막는다.
+    store.removeHistory(keyword);
+    const historyList = store.getHistoryList();
+    this.setState({ historyList });
   }
 
   componentDidMount() {
@@ -124,7 +132,7 @@ class App extends React.Component {
             <li key={id} onClick={() => this.search(keyword)}>
               <span>{keyword}</span>
               <span className="date">{formatRelativeDate(date)}</span>
-              <button className="btn-remove"></button>
+              <button className="btn-remove" onClick={(event) => this.handleClickRemoveHistory(event, keyword)}></button>
             </li>
           );
         })}
