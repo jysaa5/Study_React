@@ -1,6 +1,6 @@
 import React from "react";
 
-class SearchForm extends React.Component {
+export default class SearchForm extends React.Component {
   constructor() {
     super();
     this.state = {
