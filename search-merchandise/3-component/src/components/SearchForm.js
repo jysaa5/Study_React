@@ -19,8 +19,8 @@ export default class SearchForm extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    this.props.onSubmit(this.state.searchKeyword);
+    event.preventDefault(); // form이 제출 되었을 때, 기본 동작을 막음.
+    this.props.onSubmit(this.state.searchKeyword); // prpos의 콜백함수 호출
   }
 
   handleReset() {
