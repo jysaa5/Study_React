@@ -6,7 +6,6 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = { searchKeyowrd: "" };
-    s;
   }
   search(searchKeyword) {
     console.log("TODO: search", searchKeyword);
