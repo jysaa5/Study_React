@@ -28,6 +28,7 @@ export default class SearchForm extends React.Component {
   }
 
   render() {
+    const { searchKeyword } = this.state;
     return (
       <form onSubmit={(event) => this.handleSubmit(event)} onReset={() => this.handleReset()}>
         <input type="text" placeholder="검색어를 입력해주세요." autoFocus value={this.state.searchKeyword} onChange={(event) => this.handleChangeInput(event)}></input>
