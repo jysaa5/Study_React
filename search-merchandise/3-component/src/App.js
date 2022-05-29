@@ -16,6 +16,9 @@ export default class App extends React.Component {
   }
 
   handleChangeInput(searchKeyowrd) {
+    if (searchKeyowrd.length <= 0) {
+      this.handleReset();
+    }
     this.setState({ searchKeyowrd });
   }
 
