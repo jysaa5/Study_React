@@ -8,9 +8,8 @@ const SearchResult = ({ data = [] }) => {
     <ul className="result">
       {data.map(({ id, imageUrl, name }) => (
         <li key={id}>
-          <img src={imageUrl}>
-            <p>{name}</p>
-          </img>
+          <img src={imageUrl} />
+          <p>{name}</p>
         </li>
       ))}
     </ul>
