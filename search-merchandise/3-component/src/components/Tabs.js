@@ -1,4 +1,5 @@
-const TabType = {
+import React from "react";
+export const TabType = {
   KEYWORD: "KEYWORD",
   HISTORY: "HISTORY",
 };
@@ -23,3 +24,5 @@ const Tabs = ({ selectedTab, onChange }) => {
     </>
   );
 };
+
+export default Tabs;
