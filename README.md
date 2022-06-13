@@ -4,4 +4,4 @@
 + [TypeScript](https://www.typescriptlang.org/)
 + [React](https://reactjs.org/)
 + [react-devtools](https://www.npmjs.com/package/react-devtools)
-+ [Next.js]
++ [Next.js](https://nextjs.org/)
