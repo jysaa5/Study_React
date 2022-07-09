@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const App = () => {
   const [count, setCount] = useState(0);
+  const countRef = useRef(0);
 
   const increaseCountState = () => {
     setCount(count + 1);
