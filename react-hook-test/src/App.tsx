@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -6,7 +6,6 @@ const App = () => {
   const increaseCountState = () => {
     setCount(count + 1);
   };
-  console.log("랜더링");
 
   return (
     <div>
