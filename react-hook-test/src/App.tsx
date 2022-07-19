@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 const App = () => {
   const [count, setCount] = useState(0);
   const countRef = useRef(0);
+  console.log("랜더링...");
   console.log(countRef);
 
   const increaseCountState = () => {
