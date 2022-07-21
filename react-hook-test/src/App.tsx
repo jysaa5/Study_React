@@ -4,7 +4,7 @@ const App = () => {
   const [count, setCount] = useState(0);
   const countRef = useRef(0);
   console.log("랜더링...");
-  console.log(countRef);
+  console.log(countRef); // countRef.current
 
   const increaseCountState = () => {
     setCount(count + 1);
@@ -12,6 +12,7 @@ const App = () => {
 
   const increaseCountRef = () => {
     countRef.current = countRef.current + 1;
+    console.log("Ref: ", countRef.current);
   };
 
   return (
