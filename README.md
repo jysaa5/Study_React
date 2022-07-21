@@ -11,6 +11,6 @@
 + [Next.js](https://nextjs.org/)
 
 + Client
-  + [Recoil]   
+  + [Recoil](https://recoiljs.org/)
 + Server
-  + [React-query]   
+  + [React Query](https://react-query-v3.tanstack.com/)   
