@@ -1,8 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const App = () => {
+  const [renderer, setRenderer] = useState(0);
   const [count, setCount] = useState(0);
   const countRef = useRef(0);
+  const renderCount = useRef(1);
+  let countVar = 0;
   console.log("랜더링...");
   console.log(countRef); // countRef.current
 
@@ -15,12 +18,29 @@ const App = () => {
     console.log("Ref: ", countRef.current);
   };
 
+  const increaseCountVar = () => {
+    countVar += 1;
+    console.log("Var: ", countVar);
+  };
+
+  const doRendering = () => {
+    setRenderer(renderer + 1);
+  };
+
+  useEffect(() => {
+    renderCount.current += 1;
+    console.log("랜더링 수:", renderCount.current);
+  });
+
   return (
     <div>
       <p>State: {count}</p>
       <p>Ref: {countRef.current}</p>
       <button onClick={increaseCountState}>Add State</button>
       <button onClick={increaseCountRef}>Add Ref</button>
+      <p>Var: {countVar}</p>
+      <button onClick={increaseCountVar}>Add Var</button>
+      <button onClick={doRendering}>Render</button>
     </div>
   );
 };
