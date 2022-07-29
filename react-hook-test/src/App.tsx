@@ -6,7 +6,7 @@ const App = () => {
   const countRef = useRef(0);
   const renderCount = useRef(1);
   let countVar = 0;
-  console.log("랜더링...");
+  console.log("Rendering...");
   console.log(countRef); // countRef.current
 
   const increaseCountState = () => {
