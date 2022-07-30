@@ -27,7 +27,9 @@ const App = () => {
     setRenderer(renderer + 1);
   };
 
-  const printResults = () => {};
+  const printResults = () => {
+    console.log(`ref: ${countRef.current}, var: ${countVar}`);
+  };
 
   useEffect(() => {
     renderCount.current += 1;
@@ -43,6 +45,7 @@ const App = () => {
       <p>Var: {countVar}</p>
       <button onClick={increaseCountVar}>Add Var</button>
       <button onClick={doRendering}>Render</button>
+      <button onClick={printResults}>Print Ref, Var</button>
     </div>
   );
 };
