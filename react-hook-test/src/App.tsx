@@ -27,6 +27,8 @@ const App = () => {
     setRenderer(renderer + 1);
   };
 
+  const printResults = () => {};
+
   useEffect(() => {
     renderCount.current += 1;
     console.log("랜더링 수:", renderCount.current);
