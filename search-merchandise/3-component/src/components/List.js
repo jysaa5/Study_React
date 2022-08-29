@@ -13,11 +13,14 @@ export default class List extends React.Component {
   }
 
   render() {
+    const { onClick } = this.props;
+    const { data } = this.state;
+
     return (
       <ul className="list">
-        {this.state.data.map((item, index) => {
+        {data.map((item, index) => {
           return (
-            <li key={item.id} onClick={() => this.props.onClick(item.keyword)}>
+            <li key={item.id} onClick={() => onClick(item.keyword)}>
               {this.renderItem(item, index)}
             </li>
           );
