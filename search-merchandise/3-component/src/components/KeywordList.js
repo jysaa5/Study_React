@@ -1,6 +1,6 @@
 import React from "react";
-import List from "./List.js";
 import store from "../Store.js";
+import { List } from "./List.js";
 
 export default class KeywordList extends List {
   componentDidMount() {
