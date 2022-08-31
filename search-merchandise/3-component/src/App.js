@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./components/Header.js";
+import HistoryList from "./components/HistoryList.js";
 import KeywordList from "./components/KeywordList.js";
 import SearchForm from "./components/SearchForm.js";
 import SearchResult from "./components/SearchResult.js";
@@ -48,7 +49,7 @@ export default class App extends React.Component {
               <>
                 <Tabs selectedTab={selectedTab} onChange={(selectedTab) => this.setState({ selectedTab })} />
                 {selectedTab === TabType.KEYWORD && <KeywordList onClick={keyword => this.search(keyword)} />}
-                {selectedTab === TabType.HISTORY && <>TODO: 최근 검색어 목록</>}
+                {selectedTab === TabType.HISTORY && <HistoryList onClick={keyword => this.search(keyword)}/>}
               </>
             )}
           </div>
