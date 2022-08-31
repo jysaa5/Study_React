@@ -49,7 +49,7 @@ export default class App extends React.Component {
               <>
                 <Tabs selectedTab={selectedTab} onChange={(selectedTab) => this.setState({ selectedTab })} />
                 {selectedTab === TabType.KEYWORD && <KeywordList onClick={keyword => this.search(keyword)} />}
-                {selectedTab === TabType.HISTORY && <HistoryList onClick={keyword => this.search(keyword)}/>}
+                {selectedTab === TabType.HISTORY && <HistoryList onClick={keyword => this.search(keyword)} />}
               </>
             )}
           </div>
