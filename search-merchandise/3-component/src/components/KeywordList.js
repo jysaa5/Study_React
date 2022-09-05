@@ -14,10 +14,12 @@ export default class KeywordList extends React.Component {
     this.setState({ keywordList });
   }
   render() {
+    const { onClick } = this.props;
+    const { keywordList } = this.state;
     return (
       <List
-        data={this.state.keywordList}
-        onClick={this.props.onClick}
+        data={keywordList}
+        onClick={onClick}
         renderItem={(item, index) => {
           return (
             <>
