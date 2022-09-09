@@ -19,27 +19,12 @@ export default class HistoryList extends React.Component {
     this.setState({ historyList });
   }
 
-  handleClickRemoveHistory(event, keyword) {
-    event.stopPropagation();
+  handleClickRemoveHistory(keyword) {
     store.removeHistory(keyword);
     this.fetch();
   }
 
   render() {
-    return (
-      <List
-        data={this.state.historyList}
-        onClick={this.props.onClick}
-        renderItem={(item) => {
-          return (
-            <>
-              <span>{item.keyword}</span>
-              <span className="date">{formatRelativeDate(item.data)}</span>
-              <button className="btn-remove" onClick={(event) => this.handleClickRemoveHistory(event, item.keyword)}></button>
-            </>
-          );
-        }}
-      />
-    );
+    return <List data={this.state.historyList} onClick={this.props.onClick} hasDate={true} onRemove={(keyword) => this.handleClickRemoveHistory(keyword)} />;
   }
 }
