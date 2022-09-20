@@ -7,13 +7,17 @@
     + Vanilla JS 
   + [TypeScript](https://www.typescriptlang.org/)
 
+### Library 
 + [React](https://reactjs.org/)
-+ [react-devtools](https://www.npmjs.com/package/react-devtools)
-+ [Next.js](https://nextjs.org/)
-
 + [Recoil](https://recoiljs.org/)
 + [React Query](https://react-query-v3.tanstack.com/)
 + [react-cookie](https://github.com/reactivestack/cookies)
+
+### Framework
++ [Next.js](https://nextjs.org/)
+
+### Tool
++ [react-devtools](https://www.npmjs.com/package/react-devtools)
 
 ## :books: Reference
 + 인프런: 만들고 비교하며 학습하는 리액트 (React)
