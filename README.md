@@ -9,9 +9,13 @@
 
 ### Library 
 + [React](https://reactjs.org/)
-+ [Recoil](https://recoiljs.org/)
-+ [React Query](https://react-query-v3.tanstack.com/)
++ 상태 관리
+  + [Recoil](https://recoiljs.org/)
++ 데이터 패칭
+  + [React Query](https://react-query-v3.tanstack.com/)
 + [react-cookie](https://github.com/reactivestack/cookies)
++ UI
+  + [Ant Design](https://ant.design/docs/react/introduce)
 
 ### Framework
 + [Next.js](https://nextjs.org/)
