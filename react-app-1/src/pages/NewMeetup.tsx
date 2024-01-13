@@ -1,5 +1,5 @@
 // 새 모임 약속을 추가
-
+import { useHistory } from "react-router";
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 
 function NewMeetupPage() {
