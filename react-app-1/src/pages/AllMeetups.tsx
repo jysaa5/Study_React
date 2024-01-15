@@ -1,5 +1,6 @@
 // 모든 모임 약속을 로드하고 표시하는 컴포넌트
 
+import { useEffect, useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_DATA = [
@@ -20,11 +21,50 @@ const DUMMY_DATA = [
 ];
 
 function AllMeetupsPage() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [loadedMeetups, setLoadedMeetups] = useState<data[]>([]);
+  interface data {
+    id: string;
+    title: string;
+    image: string;
+    address: string;
+    description: string;
+  }
+
+  useEffect(() => {
+    fetch("https://react-getting-started-c5dcd-default-rtdb.firebaseio.com/meetups.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const meetups = [] as data[];
+
+        for (const key in data) {
+          const meetup = {
+            id: key,
+            ...data[key],
+          };
+          meetups.push(meetup);
+        }
+
+        setIsLoading(false);
+        setLoadedMeetups(meetups);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
   return (
     <section>
       <h1>All Meetups Page</h1>
 
-      <MeetupList meetups={DUMMY_DATA} />
+      <MeetupList meetups={loadedMeetups} />
     </section>
   );
 }
