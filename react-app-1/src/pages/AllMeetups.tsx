@@ -46,7 +46,6 @@ function AllMeetupsPage() {
           };
           meetups.push(meetup);
         }
-
         setIsLoading(false);
         setLoadedMeetups(meetups);
       });
