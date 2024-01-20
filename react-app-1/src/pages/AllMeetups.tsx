@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
+import { Data } from "../types";
 
 const DUMMY_DATA = [
   {
@@ -22,14 +23,7 @@ const DUMMY_DATA = [
 
 function AllMeetupsPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [loadedMeetups, setLoadedMeetups] = useState<data[]>([]);
-  interface data {
-    id: string;
-    title: string;
-    image: string;
-    address: string;
-    description: string;
-  }
+  const [loadedMeetups, setLoadedMeetups] = useState<Data[]>([]);
 
   useEffect(() => {
     fetch("https://react-getting-started-c5dcd-default-rtdb.firebaseio.com/meetups.json")
@@ -37,7 +31,7 @@ function AllMeetupsPage() {
         return response.json();
       })
       .then((data) => {
-        const meetups = [] as data[];
+        const meetups = [] as Data[];
 
         for (const key in data) {
           const meetup = {
